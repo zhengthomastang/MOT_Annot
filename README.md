@@ -58,7 +58,7 @@ We highly recommend to create a virtual environment for the following steps. For
    ```
 6. Use baseline single-camera tracking method, e.g., [TrackletNet](https://github.com/GaoangW/TNT/tree/master/AIC19), to output multi-target single-camera (MTSC) tracking results. The results need to be converted to the [MOTChallenge format](https://motchallenge.net/instructions/). An example script for the conversion is given: 
    ```
-   python src/convert_to_motchallenge_det.py --data-root train/S01
+   python src/convert_to_motchallenge_mtsc.py --data-root train/S01
    ```
 7. Plot the MTSC tracking results to visualize the performance and confirm that it is satisfactory:
    ```
