@@ -1,8 +1,6 @@
 # MOT_Annot
 
-This repo contains the annotation tools in Python for labeling multiple object tracking in a single camera and across multiple cameras, as well as a random generator of re-identification datasets. 
-
-It was used in *CityFlow: A City-Scale Benchmark for Multi-Target Multi-Camera Vehicle Tracking and Re-Identification*, CVPR 2019.
+This repo contains the annotation tools in Python for labeling multiple object tracking in a single camera and across multiple cameras, as well as randomly generating re-identification datasets. It was used in *CityFlow: A City-Scale Benchmark for Multi-Target Multi-Camera Vehicle Tracking and Re-Identification*, CVPR 2019.
 
 [[Paper](https://arxiv.org/abs/1903.09254)] [[Presentation](https://youtu.be/fzJe8M2y1s0)] [[Slides](http://zhengthomastang.github.io/files/CityFlow_slides.pdf)] [[Poster](http://zhengthomastang.github.io/files/CityFlow_poster.pdf)]
 
