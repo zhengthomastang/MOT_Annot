@@ -69,8 +69,8 @@ We highly recommend to create a virtual environment for the following steps. For
       - The vehicles that are not assigned will be ignored. 
    - Insert an instance to replace an existing one or fill in a missing one: `insert,<frame_num>,<original_ID>,<bbox_x>,<bbox_y>,<bbox_wid>,<bbox_hei>`
       - The missing instance(s) in a continuous trajectory will be interpolated linearly, so there is no need to insert at every frame index.
-      - The instances occluded by more than 50% will be automatically detected and removed. 
-   - Remove a range of instances: `remove,<frame_range>,<original_ID>`
+      - The instance(s) occluded by more than 50% will be automatically detected and removed. 
+   - Remove a range of instance(s): `remove,<frame_range>,<original_ID>`
       - The `<frame_range>` can be represented as `<frame_idx>`, `<frm_idx_start>-`, `-<frm_idx_end>`, or `<frame_idx_start>-<frame_idx_end>`.
 9. Incorporate the annotations to the baseline MTSC results and generate the ground truths:
    ```
