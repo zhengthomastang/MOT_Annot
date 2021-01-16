@@ -62,7 +62,7 @@ We highly recommend to create a virtual environment for the following steps. For
    ```
    python src/plot_mtsc_results.py --data-root train/S01
    ```
-8. By checking the plotted baseline MTSC results frame by frame, manually create an annotation file, e.g. `annotation.txt`. There are 3 types of operations that can be entered in the annotation file at each row: 
+8. By checking the plotted baseline MTSC results frame by frame, manually create an annotation file, e.g. `annotation.txt`. There are 3 types of operations that can be entered in the annotation file at each row (the order doesn't matter): 
    - Assign a global ID to a vehicle trajectory: `assign,<local_ID>,<global_ID>`
       - The vehicles that are not assigned will be ignored. 
    - Insert an instance to replace an existing one or fill in a missing one: `insert,<frame_index>,<local_ID>,<bbox_x>,<bbox_y>,<bbox_wid>,<bbox_hei>`
