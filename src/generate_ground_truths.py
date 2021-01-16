@@ -74,7 +74,7 @@ def main(args):
             annotation_reader = csv.reader(annotation_file, delimiter=',')
             for row in annotation_reader:
                 if row[0] == 'assign':
-                    if len(row) != 5:
+                    if len(row) != 3:
                         print('ERROR: Wrong annotation at line %d' % line_idx)
                     if int(row[1]) in match_dict:
                         print('ERROR: Duplicate assignment of local ID %d at line %d' % (int(row[1]), line_idx))
@@ -164,7 +164,7 @@ def main(args):
         for frm_index in sorted(gt_dict.keys()):
             for global_id in sorted(gt_dict[frm_index].keys()):
                 bbox = gt_dict[frm_index][global_id]
-                if not os.path.isfile(path_roi):
+                if os.path.isfile(path_roi):
                     x_min = bbox[0]
                     y_min = bbox[1]
                     x_max = bbox[0] + bbox[2] - 1
