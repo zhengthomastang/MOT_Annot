@@ -24,7 +24,7 @@ We highly recommend to create a virtual environment for the following steps. For
    ```
    cd ${ANNOT_ROOT}
    ```
-2. Add the videos from various cameras, scenes and data splits to be annotated. Your directory tree may look like this:
+2. Add the videos from various data splits, scenes, and cameras to be annotated. Your directory tree may look like this:
    ```
    ${ANNOT_ROOT}
     |-- LICENSE
