@@ -1,6 +1,6 @@
 # MOT_Annot
 
-This repo contains the annotation tools in Python for labeling multiple object tracking in single camera and across multiple cameras, as well as a random generator of re-identification datasets. 
+This repo contains the annotation tools in Python for labeling multiple object tracking in a single camera and across multiple cameras, as well as a random generator of re-identification datasets. 
 
 It was used in *CityFlow: A City-Scale Benchmark for Multi-Target Multi-Camera Vehicle Tracking and Re-Identification*, CVPR 2019.
 
@@ -8,7 +8,7 @@ It was used in *CityFlow: A City-Scale Benchmark for Multi-Target Multi-Camera V
 
 ## Introduction
 
-This package is designed for semi-automatic annotation of multiple object tracking in single camera and across multiple cameras. It requires baseline detection and single-camera object tracking results. Then the user can create manual labels and incorporate them to the tracking results to generate the ground truths. When multi-target multi-camera tracking labels are available, there is also a script for randomly generating a re-identification dataset. 
+This package is designed for semi-automatic annotation of multiple object tracking in a single camera and across multiple cameras. It requires baseline detection and single-camera tracking results. Then the user can create manual labels and incorporate them to the tracking results to generate the ground truths. When multi-camera tracking labels are available, there is also a script for randomly generating a re-identification dataset. 
 
 ## Getting Started
 
