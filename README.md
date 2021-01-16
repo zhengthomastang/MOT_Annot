@@ -77,18 +77,18 @@ We highly recommend to create a virtual environment for the following steps. For
    python src/generate_ground_truths.py --data-root train/S01
    ``` 
 10. Plot the ground truths using the above script for plotting MTSC results (change the input and output paths accordingly) to confirm that the annotations are accurate. If not, modify the corresponding lines in `annotation.txt` and repeat steps 8 and 9 again. 
-11. Plot the ground truth crops of each global ID for further validation: 
-   ```
-   python src/plot_gt_crops.py --data-root train/S01
-   ``` 
+11. Plot the ground truth crop of each global ID at each frame for further validation: 
+    ```
+    python src/plot_gt_crops.py --data-root train/S01
+    ``` 
 12. Generate the labels of ground truths for the evaluation system: 
-   ```
-   python src/generate_ground_truths_eval_system.py --data-root train/S01
-   ``` 
+    ```
+    python src/generate_ground_truths_eval_system.py --data-root train/S01
+    ``` 
 13. Generate a random dataset for re-identification (according to the format of the [VeRi dataset](https://vehiclereid.github.io/VeRi/)): 
-   ```
-   python src/generate_reid_dataset.py --data-root train/S01
-   ``` 
+    ```
+    python src/generate_reid_dataset.py --data-root train/S01
+    ``` 
 
 ## References
 
