@@ -71,7 +71,7 @@ We highly recommend to create a virtual environment for the following steps. For
       - The missing instance(s) in a continuous trajectory will be interpolated linearly, so there is no need to insert at every frame index.
       - The instance(s) occluded by more than 50% will be automatically detected and removed. 
    - Remove a range of instance(s): `remove,<frame_range>,<local_ID>`
-      - The `<frame_range>` can be represented as `<frame_index>`, `<frm_index_start>-`, `-<frm_index_end>`, or `<frame_index_start>-<frame_index_end>`.
+      - The `<frame_range>` can be represented as `<frame_index>`, `<frm_index_start>-`, `-<frm_index_end>`, or `<frame_index_start>-<frame_index_end>` (inclusive).
 9. Incorporate the annotations to the baseline MTSC results and generate the ground truths:
    ```
    python src/generate_ground_truths.py --data-root train/S01
