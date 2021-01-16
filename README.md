@@ -44,7 +44,7 @@ We highly recommend to create a virtual environment for the following steps. For
         |-- ...
 
    ```
-3. Extract frame images from input video files (indices starting from 1 by default): 
+3. Extract frame images from input video files (frame indices starting from 1 by default): 
    ```
    python src/extract_vdo_frms.py --data-root train/S01
    ```
@@ -65,13 +65,13 @@ We highly recommend to create a virtual environment for the following steps. For
    python src/plot_mtsc_results.py --data-root train/S01
    ```
 8. By checking the plotted baseline MTSC results frame by frame, manually create an annotation file, e.g. `annotation.txt`. Use tools like [IrfanView](https://www.irfanview.com/) to draw/adjust bounding boxes and read the coordinates. There are 3 types of operations that can be entered in the annotation file at each row: 
-   - Assign a global ID to a vehicle trajectory: `assign,<original_ID>,<new_ID>`
+   - Assign a global ID to a vehicle trajectory: `assign,<local_ID>,<global_ID>`
       - The vehicles that are not assigned will be ignored. 
-   - Insert an instance to replace an existing one or fill in a missing one: `insert,<frame_num>,<original_ID>,<bbox_x>,<bbox_y>,<bbox_wid>,<bbox_hei>`
+   - Insert an instance to replace an existing one or fill in a missing one: `insert,<frame_index>,<local_ID>,<bbox_x>,<bbox_y>,<bbox_wid>,<bbox_hei>`
       - The missing instance(s) in a continuous trajectory will be interpolated linearly, so there is no need to insert at every frame index.
       - The instance(s) occluded by more than 50% will be automatically detected and removed. 
-   - Remove a range of instance(s): `remove,<frame_range>,<original_ID>`
-      - The `<frame_range>` can be represented as `<frame_idx>`, `<frm_idx_start>-`, `-<frm_idx_end>`, or `<frame_idx_start>-<frame_idx_end>`.
+   - Remove a range of instance(s): `remove,<frame_range>,<local_ID>`
+      - The `<frame_range>` can be represented as `<frame_index>`, `<frm_index_start>-`, `-<frm_index_end>`, or `<frame_index_start>-<frame_index_end>`.
 9. Incorporate the annotations to the baseline MTSC results and generate the ground truths:
    ```
    python src/generate_ground_truths.py --data-root train/S01
