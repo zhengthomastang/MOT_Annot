@@ -51,7 +51,7 @@ We highly recommend to create a virtual environment for the following steps. For
 
    ![Extracted frame images](figures/frame_images.jpg)
 
-4. Use baseline object detection method, e.g., [Detectron (Mask/Faster R-CNN)](ode.amazon.com/packages/OrvilleEmpennageInference/trees/mainline), to output detection (and segmentation) results. The results need to be converted to the [MOTChallenge format](https://motchallenge.net/instructions/). An example script for the conversion is given: 
+4. Use a baseline object detection method, e.g., [Detectron (Mask/Faster R-CNN)](ode.amazon.com/packages/OrvilleEmpennageInference/trees/mainline), to output detection (and segmentation) results. The results need to be converted to the [MOTChallenge format](https://motchallenge.net/instructions/). An example script for the conversion is given: 
    ```
    python src/convert_to_motchallenge_det.py --data-root train/S01
    ```
@@ -63,7 +63,7 @@ We highly recommend to create a virtual environment for the following steps. For
 
    ![Plotted detection results](figures/det_results.jpg)
 
-6. Use baseline single-camera tracking method, e.g., [TrackletNet](https://github.com/GaoangW/TNT/tree/master/AIC19), to output multi-target single-camera (MTSC) tracking results. The results need to be converted to the [MOTChallenge format](https://motchallenge.net/instructions/). An example script for the conversion is given: 
+6. Use a baseline single-camera tracking method, e.g., [TrackletNet](https://github.com/GaoangW/TNT/tree/master/AIC19), to output multi-target single-camera (MTSC) tracking results. The results need to be converted to the [MOTChallenge format](https://motchallenge.net/instructions/). An example script for the conversion is given: 
    ```
    python src/convert_to_motchallenge_mtsc.py --data-root train/S01
    ```
@@ -77,9 +77,9 @@ We highly recommend to create a virtual environment for the following steps. For
 
 8. By checking the plotted baseline MTSC results frame by frame, manually create an annotation file, e.g. `annotation.txt`. There are 3 types of operations that can be entered in the annotation file at each row (the order doesn't matter): 
    - Assign a global ID to a vehicle trajectory: `assign,<local_ID>,<global_ID>`
-      - The vehicles that are not assigned will be ignored. 
+      - The vehicle(s) that are not assigned will be ignored. 
    - Insert an instance to replace an existing one or fill in a missing one: `insert,<frame_index>,<local_ID>,<bbox_x>,<bbox_y>,<bbox_wid>,<bbox_hei>`
-      - Use tools like [IrfanView](https://www.irfanview.com/) to draw/adjust bounding boxes and read the coordinates. 
+      - Use a tool like [IrfanView](https://www.irfanview.com/) to draw/adjust bounding boxes and read the coordinates. 
 
         ![Annotation by IrfanView](figures/annotation.jpg)
 
