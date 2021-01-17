@@ -41,10 +41,10 @@ def main(args, colorList):
         # N_frame = 100
 
         for t in range(1, int(N_frame)):
-            if os.path.exists(save_path + str(t).zfill(6) + '.jpg'):
+            if os.path.exists(os.path.join(save_path, str(t).zfill(6) + '.jpg')):
                 continue
             print('t = ' + str(t))
-            img_name = path_images + str(t).zfill(6) + '.jpg'
+            img_name = os.path.join(path_images, str(t).zfill(6) + '.jpg')
             print(img_name)
             img = cv2.imread(img_name)
             overlay = img.copy()
@@ -89,7 +89,7 @@ def main(args, colorList):
 
             cv2.putText(overlay, 'Frame Index: %06d' % t, (10, 30), cv2.FONT_HERSHEY_SIMPLEX ,  
                         1, (0, 0, 0), 2, cv2.LINE_AA) 
-            save_name = save_path + str(t).zfill(6) + '.jpg'
+            save_name = os.path.join(save_path, str(t).zfill(6) + '.jpg')
             cv2.imwrite(save_name, overlay)
 
 

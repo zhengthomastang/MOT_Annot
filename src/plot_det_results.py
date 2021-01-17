@@ -16,17 +16,17 @@ def main(args):
         path_data = os.path.join(args.data_root, seq_name)
         det_file_path = os.path.join(path_data, 'det/det_mask_rcnn.txt')
         in_img_dir_path = os.path.join(path_data, 'img1')
-        out_img_dir_path = os.path.join(path_data, 'det/img1')
+        out_img_dir_path = os.path.join(path_data, 'det/det_mask_rcnn')
         check_and_create(out_img_dir_path)
 
         with open(det_file_path) as det_file:
             for det in det_file:
                 det_list = det.split(',')
                 frame_index = int(det_list[0])
-                out_img_path = out_img_dir_path + '%06d.jpg' % frame_index
+                out_img_path = os.path.join(out_img_dir_path, '%06d.jpg' % frame_index)
                 if not os.path.exists(out_img_path):
                     print('Frame Index: %06d' % frame_index)
-                    in_img_path  = in_img_dir_path + '%06d.jpg' % frame_index
+                    in_img_path  = os.path.join(in_img_dir_path, '%06d.jpg' % frame_index)
                     frame_img = cv2.imread(in_img_path)
                     cv2.imwrite(out_img_path, frame_img)
                 frame_img = cv2.imread(out_img_path)

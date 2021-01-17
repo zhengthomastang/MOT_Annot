@@ -22,6 +22,7 @@ We highly recommend to create a virtual environment for the following steps. For
    ```
    cd ${ANNOT_ROOT}
    ```
+
 2. Add the videos from various data splits, scenes, and cameras to be annotated. Your directory tree may look like this:
    ```
    ${ANNOT_ROOT}
@@ -42,48 +43,70 @@ We highly recommend to create a virtual environment for the following steps. For
         |-- ...
 
    ```
+
 3. Extract frame images from input video files (frame indices starting from 1 by default): 
    ```
    python src/extract_vdo_frms.py --data-root train/S01
    ```
+
+   ![Extracted frame images](figures/frame_images.jpg)
+
 4. Use baseline object detection method, e.g., [Detectron (Mask/Faster R-CNN)](ode.amazon.com/packages/OrvilleEmpennageInference/trees/mainline), to output detection (and segmentation) results. The results need to be converted to the [MOTChallenge format](https://motchallenge.net/instructions/). An example script for the conversion is given: 
    ```
    python src/convert_to_motchallenge_det.py --data-root train/S01
    ```
+
 5. Plot the detection results to visualize the performance and confirm that it is satisfactory:
    ```
    python src/plot_det_results.py --data-root train/S01
    ```
+
+   ![Plotted detection results](figures/det_results.jpg)
+
 6. Use baseline single-camera tracking method, e.g., [TrackletNet](https://github.com/GaoangW/TNT/tree/master/AIC19), to output multi-target single-camera (MTSC) tracking results. The results need to be converted to the [MOTChallenge format](https://motchallenge.net/instructions/). An example script for the conversion is given: 
    ```
    python src/convert_to_motchallenge_mtsc.py --data-root train/S01
    ```
+
 7. Plot the MTSC tracking results to visualize the performance and confirm that it is satisfactory:
    ```
    python src/plot_mtsc_results.py --data-root train/S01
    ```
+
+   ![Plotted single-camera tracking results](figures/mtsc_results.jpg)
+
 8. By checking the plotted baseline MTSC results frame by frame, manually create an annotation file, e.g. `annotation.txt`. There are 3 types of operations that can be entered in the annotation file at each row (the order doesn't matter): 
    - Assign a global ID to a vehicle trajectory: `assign,<local_ID>,<global_ID>`
       - The vehicles that are not assigned will be ignored. 
    - Insert an instance to replace an existing one or fill in a missing one: `insert,<frame_index>,<local_ID>,<bbox_x>,<bbox_y>,<bbox_wid>,<bbox_hei>`
       - Use tools like [IrfanView](https://www.irfanview.com/) to draw/adjust bounding boxes and read the coordinates. 
+
+        ![Annotation by IrfanView](figures/annotation.jpg)
+
       - The missing instance(s) in a continuous trajectory will be interpolated linearly, so there is no need to insert at every frame index.
       - The instance(s) occluded by more than 50% will be automatically detected and removed. 
    - Remove a range of instance(s): `remove,<frame_range>,<local_ID>`
       - The `<frame_range>` can be represented as `<frame_index>`, `<frm_index_start>-`, `-<frm_index_end>`, or `<frame_index_start>-<frame_index_end>` (inclusive).
+
 9. Incorporate the annotations to the baseline MTSC results and generate the ground truths:
    ```
    python src/generate_ground_truths.py --data-root train/S01
    ``` 
+
 10. Plot the ground truths using the above script for plotting MTSC results (change the input and output paths accordingly) to confirm that the annotations are accurate. If not, modify the corresponding lines in `annotation.txt` and repeat steps 8 and 9 again. 
+
 11. Plot the ground truth crop of each global ID at each frame for further validation: 
     ```
     python src/plot_gt_crops.py --data-root train/S01
     ``` 
+
+    ![Plotted ground truths](figures/ground_truth.jpg)
+
 12. Generate the labels of ground truths for the evaluation system: 
     ```
     python src/generate_ground_truths_eval_system.py --data-root train/S01
     ``` 
+
 13. Generate a random dataset for re-identification (according to the format of the [VeRi dataset](https://vehiclereid.github.io/VeRi/)): 
     ```
     python src/generate_reid_dataset.py --data-root train/S01
