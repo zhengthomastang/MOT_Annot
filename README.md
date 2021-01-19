@@ -109,7 +109,7 @@ We highly recommend to create a virtual environment for the following steps. For
 
 13. Generate a random dataset for re-identification (according to the format of the [VeRi dataset](https://vehiclereid.github.io/VeRi/)): 
     ```
-    python src/generate_reid_dataset.py --data-root train/S01
+    python src/generate_reid_dataset.py --data-root ./ --output-root reid
     ``` 
 
 ## References
